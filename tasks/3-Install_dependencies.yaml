@@ -1,0 +1,6 @@
+- name: 3-Install dependencies
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  with_items: "{{ dependencies }}"

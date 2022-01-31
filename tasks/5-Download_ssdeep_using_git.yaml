@@ -1,0 +1,5 @@
+- name: 5-Download ssdeep using git
+  ansible.builtin.git:
+    repo: "{{ git_repo_ssdeep }}"
+    dest: "{{ git_dest_folder_ssdeep }}"
+    version: "{{ git_app_version_ssdeep }}"

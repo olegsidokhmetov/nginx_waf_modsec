@@ -1,0 +1,5 @@
+- name: 16-Create file modsec-config.conf with new line "Include /etc/nginx/modsec/modsecurity.conf"
+  copy:
+    dest: "{{ ModSecurity_nginx_dir_config }}/modsec-config.conf"
+    content: |
+      Include /etc/nginx/modsec/modsecurity.conf

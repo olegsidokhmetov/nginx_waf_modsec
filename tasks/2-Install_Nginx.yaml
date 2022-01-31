@@ -1,0 +1,12 @@
+- name: 2-Install nginx
+  apt:
+    name: nginx
+    state: "{{ nginx_version }}"
+
+- name: 2.1-Enable Nginx service
+  systemd:
+    name: nginx
+    daemon_reload: true
+    enabled: true
+  become: true
+  become_user: root

@@ -1,0 +1,6 @@
+- name: 7-Download ModSecurity using git branch v3/master
+  ansible.builtin.git:
+    repo: "{{ git_repo_ModSecurity }}"
+    dest: "{{ git_dest_folder_ModSecurity }}"
+    single_branch: yes
+    version: "{{ git_app_branch_ver_ModSecurity }}"

@@ -1,0 +1,5 @@
+- name: 9-Download ModSecurity-nginx using git repo
+  ansible.builtin.git:
+    repo: "{{ git_repo_ModSecurity_nginx }}"
+    dest: "{{ git_dest_folder_ModSecurity_nginx }}"
+    version: "{{ git_app_version_ModSecurity_nginx }}"

@@ -1,0 +1,10 @@
+- name: 19-Download OWASP version v3.3.2 in "{{ download_dir }}"
+  get_url:
+    url: "{{ owasp_file_repo }}"
+    dest: "{{ download_dir }}"
+
+- name: 19.1 -Extract file {{ owasp_name_file }} into "{{ ModSecurity_nginx_dir_config }}"
+  ansible.builtin.unarchive:
+    src: "{{ download_dir }}{{ owasp_name_file }}"
+    dest: "{{ ModSecurity_nginx_dir_config }}"
+    remote_src: yes

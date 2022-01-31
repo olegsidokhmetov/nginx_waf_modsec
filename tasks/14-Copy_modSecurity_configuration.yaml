@@ -1,0 +1,5 @@
+- name: 14-Copy the ModSecurity configuration to folder {{ ModSecurity_nginx_dir_config }}
+  ansible.builtin.copy:
+    src: "{{ git_dest_folder_ModSecurity }}/modsecurity.conf-recommended"
+    dest: "{{ ModSecurity_nginx_dir_config }}/modsecurity.conf"
+    remote_src: true

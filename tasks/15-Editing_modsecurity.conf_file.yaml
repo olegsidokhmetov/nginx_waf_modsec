@@ -1,0 +1,9 @@
+- name: 15-Editing modsecurity.conf file in folder {{ ModSecurity_nginx_dir_config }}
+  replace:
+    path: "{{ item.path }}"
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.replace }}"
+  with_items:
+    - {path: "{{ ModSecurity_nginx_dir_config }}/modsecurity.conf", regexp: "SecRuleEngine DetectionOnly", replace: "SecRuleEngine On"}
+    - {path: "{{ ModSecurity_nginx_dir_config }}/modsecurity.conf", regexp: "SecAuditLog /var/log/modsec_audit.log", replace: "SecAuditLog /var/log/nginx/modsec_audit.log"}
+    - {path: "{{ ModSecurity_nginx_dir_config }}/modsecurity.conf", regexp: "SecAuditLogParts ABIJDEFHZ", replace: "SecAuditLogParts ABCEFHJKZ"}

@@ -1,0 +1,8 @@
+- name: 21-Add new configuration line in file modsec-config.conf
+  lineinfile:
+    path: "{{ ModSecurity_nginx_dir_config }}/modsec-config.conf"
+    insertafter: '^Include \/etc\/nginx\/modsec\/modsecurity\.conf'
+    line: '{{ item }}'
+  with_items:
+    - 'Include /etc/nginx/modsec/coreruleset-3.3.2/rules/*.conf'
+    - 'Include /etc/nginx/modsec/coreruleset-3.3.2/crs-setup.conf'

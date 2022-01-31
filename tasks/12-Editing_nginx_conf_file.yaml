@@ -1,0 +1,16 @@
+- name: 12-Add new line "load_module modules/ngx_http_modsecurity_module.so;" in file {{ nginx_conf_file }}
+  lineinfile:
+    path: "{{ nginx_home_dir }}{{ nginx_conf_file }}"
+    insertafter: '^include \/etc\/nginx\/modules-enabled\/\*\.conf;'
+    line: 'load_module /usr/share/nginx/modules/ngx_http_modsecurity_module.so;'
+    state: present
+#    backup: yes
+
+- name: 12.1-Add new line "modsecurity on;" and "modsecurity_rules_file /etc/nginx/modsec/modsec-config.conf;" in file {{ nginx_conf_file }}
+  lineinfile:
+    path: "{{ nginx_home_dir }}{{ nginx_conf_file }}"
+    insertbefore: 'sendfile on;'
+    line: '{{ item }}'
+  with_items:
+    - '        modsecurity on;'
+    - '        modsecurity_rules_file /etc/nginx/modsec/modsec-config.conf;'

@@ -1,0 +1,5 @@
+- name: 20-Copy the "crs-setup.conf.example" configuration file to folder {{ owasp_conf_nginx_dir }}
+  ansible.builtin.copy:
+    src: "{{ owasp_conf_nginx_dir }}/crs-setup.conf.example"
+    dest: "{{ owasp_conf_nginx_dir }}/crs-setup.conf"
+    remote_src: true

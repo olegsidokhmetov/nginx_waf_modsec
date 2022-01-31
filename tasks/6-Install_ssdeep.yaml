@@ -1,0 +1,9 @@
+    - name: 6-Install ssdeep from directory {{ git_dest_folder_ssdeep }}
+      args:
+        chdir: "{{ git_dest_folder_ssdeep }}"
+        executable: "/bin/bash"
+      shell: |
+        ./bootstrap
+        ./configure
+        make
+        make install

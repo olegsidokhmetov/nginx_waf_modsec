@@ -1,0 +1,4 @@
+- name: 13-Create directory /etc/nginx/modsec/ for store ModSecurity configuration
+  file:
+    path: "{{ ModSecurity_nginx_dir_config }}"
+    state: directory

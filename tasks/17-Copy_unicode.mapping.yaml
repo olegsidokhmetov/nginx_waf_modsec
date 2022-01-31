@@ -1,0 +1,5 @@
+- name: 17-Copy file unicode.mapping from folder {{ git_dest_folder_ModSecurity }} to folder {{ ModSecurity_nginx_dir_config }}
+  ansible.builtin.copy:
+    src: "{{ git_dest_folder_ModSecurity }}/unicode.mapping"
+    dest: "{{ ModSecurity_nginx_dir_config }}"
+    remote_src: true
