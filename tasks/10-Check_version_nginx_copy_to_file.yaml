@@ -1,0 +1,11 @@
+- name: 10-Check nginx version
+  command: nginx -v
+  register: nginx_version
+
+- debug:
+    msg: "{{ nginx_version.stderr_lines }}"
+
+- name: 10.1-Copy variable with version of nginx  as we need to file {{ nginx_text_ver_file }}
+  copy: 
+    content: "{{ nginx_version.stderr_lines }}" 
+    dest: "{{ download_dir }}{{ nginx_text_ver_file }}"

@@ -1,17 +1,24 @@
-- name: 11-Download nginx with version 1.18.0 in "{{ download_dir }}"
+- name: 11-Extracting version of nginx which was installed on system
+  shell: command | cut -c24-29 "{{ download_dir }}{{ nginx_text_ver_file }}"
+  register: nginx_current_version
+
+- debug:
+    msg: "{{ nginx_current_version.stdout }}"
+
+- name: 11.1-Download nginx with version {{ nginx_current_version.stdout }} in "{{ download_dir }}"
   get_url:
-    url: "{{ nginx_url }}"
+    url: http://nginx.org/download/nginx-{{ nginx_current_version.stdout }}.tar.gz
     dest: "{{ download_dir }}"
 
-- name: 11.1-Extract nginx-1.18.0.tar.gz into "{{ download_dir }}"
+- name: 11.2-Extract nginx-{{ nginx_current_version.stdout }}.tar.gz into "{{ download_dir }}"
   ansible.builtin.unarchive:
-    src: "{{ download_dir }}{{ nginx_file_name }}"
+    src: "{{ download_dir }}nginx-{{ nginx_current_version.stdout }}.tar.gz"
     dest: "{{ download_dir }}"
     remote_src: yes
 
-- name: 11.2-Configuration of nginx with module ModSecurity-nginx
+- name: 11.3-Configuration of nginx with module ModSecurity-nginx
   args:
-    chdir: "{{ nginx_folder }}"
+    chdir: "{{ download_dir }}nginx-{{ nginx_current_version.stdout }}"
     executable: "/bin/bash"
   shell: |
     ./configure --with-compat --add-dynamic-module=../ModSecurity-nginx

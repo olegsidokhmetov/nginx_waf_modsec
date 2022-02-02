@@ -27,10 +27,11 @@ ModSecurity_nginx_dir_config:            /etc/nginx/modsec
 
 #Nginx 1.18.0
 nginx_url:                               http://nginx.org/download/nginx-1.18.0.tar.gz
-nginx_file_name:                         nginx-1.18.0.tar.gz
+#nginx_file_name:                         nginx-1.18.0.tar.gz
 nginx_folder:                            /home/downloads/nginx-1.18.0
 nginx_home_dir:                          /etc/nginx/
 nginx_conf_file:                         nginx.conf
+nginx_text_ver_file:                     nginx_version.txt
 
 #Dependencies applications
 dependencies:

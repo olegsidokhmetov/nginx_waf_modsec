@@ -1,6 +1,0 @@
-- name: 10-Check nginx version
-  command: nginx -v
-  register: nginx_version
-
-- debug:
-    msg: "{{ nginx_version.stderr_lines }}"
