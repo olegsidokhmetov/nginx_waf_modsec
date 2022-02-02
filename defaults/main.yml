@@ -3,7 +3,6 @@
 
 #Other
 download_dir:                            /home/downloads/
-nginx_version:                           latest
 
 #Git data - ssdeep
 git_dest_folder_ssdeep:                  /home/downloads/ssdeep
@@ -26,12 +25,13 @@ owasp_conf_nginx_dir:                    /etc/nginx/modsec/coreruleset-3.3.2
 ModSecurity_nginx_dir_config:            /etc/nginx/modsec
 
 #Nginx 1.18.0
-nginx_url:                               http://nginx.org/download/nginx-1.18.0.tar.gz
+#nginx_url:                               http://nginx.org/download/nginx-1.18.0.tar.gz
 #nginx_file_name:                         nginx-1.18.0.tar.gz
-nginx_folder:                            /home/downloads/nginx-1.18.0
+#nginx_folder:                            /home/downloads/nginx-1.18.0
 nginx_home_dir:                          /etc/nginx/
 nginx_conf_file:                         nginx.conf
 nginx_text_ver_file:                     nginx_version.txt
+nginx_version:                           latest
 
 #Dependencies applications
 dependencies:
